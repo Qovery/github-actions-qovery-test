@@ -42,8 +42,8 @@ jobs:
       - name: Deploy with Qovery
         shell: bash
         run: |
-          sudo curl -s https://get.qovery.com | bash
-
+          curl -s https://get.qovery.com | bash
+          
           ${{ secrets.QOVERY_CLI_ACCESS_TOKEN }} qovery environment deploy \
             --organization "Qovery Realm" \
             --project "Test GitHub" \
