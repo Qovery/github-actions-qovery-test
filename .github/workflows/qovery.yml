@@ -41,10 +41,10 @@ jobs:
 
       - name: Deploy with Qovery
         shell: bash
+        env: 
+          QOVERY_CLI_ACCESS_TOKEN: ${{ secrets.QOVERY_CLI_ACCESS_TOKEN }}
         run: |
           curl -s https://get.qovery.com | bash
-          
-          qovery -h
           
           qovery environment deploy \
             --organization "Qovery Realm" \
