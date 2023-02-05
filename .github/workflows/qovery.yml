@@ -1,6 +1,9 @@
 name: Build Push Deploy
 
-#on: commit
+on:
+  push:
+    branches:
+      - main
 
 # CANCEL PREVIOUS RUNS
 concurrency:
@@ -37,13 +40,11 @@ jobs:
       #     labels: ${{ steps.meta.outputs.labels }}-backend
 
       - name: Deploy with Qovery
-        with:
-          QOVERY_CLI_ACCESS_TOKEN: ${{ secrets.QOVERY_CLI_ACCESS_TOKEN }}
         shell: bash
         run: |
           sudo curl -s https://get.qovery.com | bash
 
-          qovery environment deploy \
+          ${{ secrets.QOVERY_CLI_ACCESS_TOKEN }} qovery environment deploy \
             --organization "Qovery Realm" \
             --project "Test GitHub" \
             --environment "production" \
