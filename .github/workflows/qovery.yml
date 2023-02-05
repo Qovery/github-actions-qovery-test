@@ -44,7 +44,9 @@ jobs:
         run: |
           curl -s https://get.qovery.com | bash
           
-          ${{ secrets.QOVERY_CLI_ACCESS_TOKEN }} qovery environment deploy \
+          qovery -h
+          
+          qovery environment deploy \
             --organization "Qovery Realm" \
             --project "Test GitHub" \
             --environment "production" \
